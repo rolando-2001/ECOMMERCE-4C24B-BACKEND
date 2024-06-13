@@ -6,7 +6,8 @@ from tienda.views import (
     Login,
     UserViewSet,
     FurnitureViewSet,
-    FurnitureCategoryViewSet
+    FurnitureCategoryViewSet,
+    FurnitureByCategoryViewSet
 )
 
 router = DefaultRouter()
@@ -17,4 +18,5 @@ router.register('furniture-categories', FurnitureCategoryViewSet)
 urlpatterns = [
     path('', include(router.urls)),
     path('login/', Login.as_view(), name='login'),
+    path('furniture-category/<int:category_id>/', FurnitureByCategoryViewSet.as_view({'get': 'retrieve'}), name='furniture-category'),
 ]
