@@ -42,9 +42,9 @@ INSTALLED_APPS = [
     'django.contrib.staticfiles',
 
 #dependencies
+    'corsheaders',
     'rest_framework',
     'rest_framework_simplejwt',
-    'corsheaders',
 
     
 #apps
@@ -81,15 +81,19 @@ SIMPLE_JWT = {
 MIDDLEWARE = [
     'django.middleware.security.SecurityMiddleware',
     'django.contrib.sessions.middleware.SessionMiddleware',
-
     'corsheaders.middleware.CorsMiddleware',
-
     'django.middleware.common.CommonMiddleware',
     'django.middleware.csrf.CsrfViewMiddleware',
     'django.contrib.auth.middleware.AuthenticationMiddleware',
     'django.contrib.messages.middleware.MessageMiddleware',
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
 ]
+
+CORS_ALLOWED_ORIGINS = [
+    "http://localhost:5173",
+]
+
+APPEND_SLASH=False
 
 ROOT_URLCONF = 'ecommerce.urls'
 
@@ -120,7 +124,7 @@ DATABASES = {
         'ENGINE': 'django.db.backends.mysql',
         'NAME': 'ecommerce',
         'USER': 'root',
-        'PASSWORD': '',
+        'PASSWORD': 'root123',
         'HOST': 'localhost',  # O la dirección IP de tu servidor MySQL
         'PORT': '3306',  # Puerto por defecto de MySQL
     }
@@ -171,6 +175,3 @@ STATIC_URL = 'static/'
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 
 
-CORS_ALLOWED_ORIGINS = [
-
-]
