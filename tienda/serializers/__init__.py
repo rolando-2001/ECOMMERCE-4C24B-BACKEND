@@ -4,7 +4,7 @@ from  .furniturecategory_serializers import FurnitureCategorySerializer
 from  .pay_serializers import PaySerializer
 from .card_serializers import CardSerializer
 
-from .orders_serializers import *
+from .orders_serializers import OrdersSerializer
 
 __all__=[
     'UserSerializer',
@@ -16,7 +16,7 @@ __all__=[
     'FurnitureCategorySerializer'
 
 ################
-    'OrderSerializer',
+    'OrdersSerializer',
     'OrderItemSerializer'
 ################
     
