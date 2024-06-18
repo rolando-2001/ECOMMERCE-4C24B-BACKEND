@@ -5,7 +5,7 @@ from rest_framework.routers import DefaultRouter
 from tienda.views import (
     Register,
     Login,
-
+    RevalidateToken,
     UserViewSet,
     FurnitureViewSet,
 
@@ -32,7 +32,8 @@ urlpatterns = [
 
     path('auth/login', Login.as_view(), name='login'),
     path('auth/register', Register.as_view(), name='register'),
-    path('card/', CardViewSet.as_view(), name='card'),
+    path('auth/revalidate-token', RevalidateToken.as_view(), name='revalidate-token'),
+    path('payment/create', CardViewSet.as_view(), name='card'),
 
     path('furniture-category/<int:category_id>/', FurnitureByCategoryViewSet.as_view({'get': 'retrieve'}), name='furniture-category'),
 ]
