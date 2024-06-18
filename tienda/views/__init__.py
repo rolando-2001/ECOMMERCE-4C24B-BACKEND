@@ -1,4 +1,5 @@
 from .logi_view import Login
+from .revalidate_token_view import RevalidateToken
 from .furniture_view import FurnitureViewSet
 from .user_view import UserViewSet
 from .furniturecategory_view import FurnitureCategoryViewSet
@@ -14,7 +15,7 @@ __all__=[
 
     'Login',
     'Register'
-
+    'RevalidateToken',
     'FurnitureViewSet',
     'UserViewSet',
 

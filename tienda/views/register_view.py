@@ -4,8 +4,6 @@ from tienda.models import User
 
 ####################################################################################################
 from rest_framework_simplejwt.views import TokenObtainPairView
-from django.contrib.auth import authenticate
-from rest_framework_simplejwt.tokens import RefreshToken
 
 ####################################################################################################
 from rest_framework import status

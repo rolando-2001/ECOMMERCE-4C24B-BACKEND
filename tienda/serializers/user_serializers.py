@@ -17,7 +17,11 @@ class RegisterSerializer(serializers.ModelSerializer):
                   'email', 
                   'password'
                  ]
-
+        
+        
+class RevalidateTokenSerializer(serializers.Serializer):
+    refresh = serializers.CharField()
+    
 class UserSerializer(serializers.ModelSerializer):
     class Meta:
         model = User

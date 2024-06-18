@@ -1,37 +1,44 @@
 from rest_framework.views import APIView
+from rest_framework_simplejwt.views import TokenObtainPairView
 from rest_framework.response import Response
 from rest_framework import status
 from tienda.models import Orders, Orderitems, Furniture
+from rest_framework.authentication import get_authorization_header
 from django.utils import timezone
+import jwt
+from tienda.serializers import CardSerializer
 
-class CardViewSet(APIView):
+class CardViewSet(TokenObtainPairView):
+    serializer_class = CardSerializer
     
     def post(self, request):
+        auth_header = get_authorization_header(request).split()
+        if not auth_header or auth_header[0].lower() != b"bearer":
+            return Response(
+                {"error": "Token no encontrado"}, status=status.HTTP_401_UNAUTHORIZED
+            )
+
+        token = auth_header[1].decode("utf-8")
+        user_id = jwt.decode(token, "SECRET_KEY", algorithms=["HS256"])["user_id"]
+
         data_card = request.data
-        print(data_card)
-        
+
         total_price = 0
         for item in data_card['cart']:
-            print(f"ID: {item['id']}, Name: {item['name']}, Price: {item['price']}, Quantity: {item['quantity']}")
             total_price += float(item['price']) * item['quantity']
 
             try:
                 furniture = Furniture.objects.get(furniture_id=item['id'])  # Cambiado de furniture_id a id
             except Furniture.DoesNotExist:
                 return Response({"error": f"Furniture with id {item['id']} does not exist"}, status=status.HTTP_404_NOT_FOUND)
-            
+
             # Guardar cada ítem del carrito en la base de datos
-            order_item = Orderitems.objects.create(
+            Orderitems.objects.create(
                 order=None,  # Aún no tenemos el ID de la orden
                 product=furniture,
                 quantity=item['quantity'],
                 price=item['price']
             )
-
-        print(f"Total price: {total_price}")  
-
-        user_id = data_card['user']
-        print(f"User ID: {user_id}")  # Acceder al campo 'user'
 
         # Crear la orden en la base de datos
         order = Orders.objects.create(

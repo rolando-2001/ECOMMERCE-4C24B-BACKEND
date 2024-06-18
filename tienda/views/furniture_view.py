@@ -2,6 +2,7 @@ from rest_framework import viewsets
 from rest_framework.permissions import AllowAny
 from tienda.models import Furniture
 from tienda.serializers import FurnitureSerializer
+from rest_framework.permissions import AllowAny
 
 class FurnitureViewSet(viewsets.ModelViewSet):
     queryset = Furniture.objects.all()

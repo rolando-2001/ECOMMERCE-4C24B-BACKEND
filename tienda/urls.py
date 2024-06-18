@@ -5,7 +5,7 @@ from rest_framework.routers import DefaultRouter
 from tienda.views import (
     Register,
     Login,
-
+    RevalidateToken,
     UserViewSet,
     FurnitureViewSet,
 
@@ -37,7 +37,8 @@ urlpatterns = [
     path('auth/login', Login.as_view(), name='login'),
 
     path('auth/register', Register.as_view(), name='register'),
-    path('card/', CardViewSet.as_view(), name='card'),
+    path('auth/revalidate-token', RevalidateToken.as_view(), name='revalidate-token'),
+    path('payment/create', CardViewSet.as_view(), name='card'),
 
     #oreder list
     path('user-orders/<int:user_id>/', UserOrderListView.as_view(), name='user-order-list'),
