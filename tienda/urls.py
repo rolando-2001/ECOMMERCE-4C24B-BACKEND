@@ -15,7 +15,11 @@ from tienda.views import (
     PayViewSet,
 
    # CardViewSet
-   CardViewSet
+   CardViewSet,
+
+   # UserOrdersView
+    UserOrderListView
+
 )
 
 router = DefaultRouter()
@@ -31,8 +35,12 @@ urlpatterns = [
     path('', include(router.urls)),
 
     path('auth/login', Login.as_view(), name='login'),
+
     path('auth/register', Register.as_view(), name='register'),
     path('card/', CardViewSet.as_view(), name='card'),
+
+    #oreder list
+    path('user-orders/<int:user_id>/', UserOrderListView.as_view(), name='user-order-list'),
 
     path('furniture-category/<int:category_id>/', FurnitureByCategoryViewSet.as_view({'get': 'retrieve'}), name='furniture-category'),
 ]

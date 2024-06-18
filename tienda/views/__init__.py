@@ -7,6 +7,9 @@ from .register_view import Register
 from .pay_view import PayViewSet
 from .card_view import CardViewSet
 
+
+from .orders_view import UserOrderListView
+
 __all__=[
 
     'Login',
@@ -22,5 +25,9 @@ __all__=[
     'PayViewSet'
 
     # 'CardViewSet'
-    , 'CardViewSet'
+    , 'CardViewSet',
+
+    'UserOrderListView'
+  
+    
 ]
