@@ -12,6 +12,7 @@ from rest_framework import status
 from rest_framework.request import Request
 from rest_framework.response import Response
 from rest_framework.generics import GenericAPIView
+import jwt
 
 
 # Para iniciar sesion
@@ -24,20 +25,26 @@ class Login(TokenObtainPairView):
     def post(self, request: Request, *args, **kwargs):
         username = request.data.get("email")
         password = request.data.get("password")
-        
+
         print(username)
 
         user = authenticate(username=username, password=password)
 
         if user:
-            login_serializer = self.serializer_class(data={"username": username, "password": password})
+            login_serializer = self.serializer_class(
+                data={"username": username, "password": password}
+            )
 
             if login_serializer.is_valid():
                 user_serializer = UserSerializer(user)
 
                 return Response(
                     {
-                        "token": login_serializer.validated_data.get("access"),
+                        "token": jwt.encode(
+                            {"user_id": user_serializer.data["user_id"]},
+                            "SECRET_KEY",
+                            algorithm="HS256",
+                        ),
                         "user": user_serializer.data,
                     },
                     status=status.HTTP_200_OK,
