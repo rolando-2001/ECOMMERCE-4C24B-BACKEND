@@ -1,21 +1,26 @@
-from tienda.views.logi_view import Login
-from tienda.views.furniture_view import FurnitureViewSet
-from tienda.views.user_view import UserViewSet
-from tienda.views.furniturecategory_view import FurnitureCategoryViewSet
-from tienda.views.furniturerelated_view import FurnitureByCategoryViewSet
-from tienda.views.register_view import Register
-from tienda.views.revalidate_token_view import RevalidateToken
-
-
+from .logi_view import Login
+from .furniture_view import FurnitureViewSet
+from .user_view import UserViewSet
+from .furniturecategory_view import FurnitureCategoryViewSet
+from .furniturerelated_view import FurnitureByCategoryViewSet
+from .register_view import Register
+from .pay_view import PayViewSet
+from .card_view import CardViewSet
 
 __all__=[
+
     'Login',
-    'Register',
-    'RevalidateToken',
+    'Register'
+
     'FurnitureViewSet',
     'UserViewSet',
-    'FurnitureCategoryViewSet',
-    'FurnitureByCategoryViewSet'
-    
 
+    'FurnitureCategoryViewSet',
+    'FurnitureByCategoryViewSet',
+
+    'Register',
+    'PayViewSet'
+
+    # 'CardViewSet'
+    , 'CardViewSet'
 ]

@@ -1,6 +1,7 @@
-from tienda.serializers.user_serializers import UserSerializer,LoginSerializer, RegisterSerializer, RevalidateTokenSerializer
-from tienda.serializers.furniture_serializers import FurnitureSerializer
-from  tienda.serializers.furniturecategory_serializers import FurnitureCategorySerializer
+from .user_serializers import (UserSerializer,LoginSerializer, RegisterSerializer)
+from .furniture_serializers import FurnitureSerializer
+from  .furniturecategory_serializers import FurnitureCategorySerializer
+from  .pay_serializers import PaySerializer
 
 __all__=[
     'UserSerializer',

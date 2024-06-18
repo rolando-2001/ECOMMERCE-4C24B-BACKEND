@@ -9,12 +9,13 @@ from rest_framework_simplejwt.views import TokenObtainPairView
 from rest_framework import status
 from rest_framework.request import Request
 from rest_framework.response import Response
-
+from rest_framework.generics import GenericAPIView
+from rest_framework.permissions import AllowAny
 
 # Para iniciar sesion
 class Register(TokenObtainPairView):
     serializer_class = RegisterSerializer
-
+    permission_classes = [AllowAny]
     # my_function(1, 2, 3, 4, 5, name='John', age=30)
     # def my_function(*args, **kwargs):
 

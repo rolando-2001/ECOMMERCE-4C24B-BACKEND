@@ -124,7 +124,7 @@ DATABASES = {
         'ENGINE': 'django.db.backends.mysql',
         'NAME': 'ecommerce',
         'USER': 'root',
-        'PASSWORD': 'root123',
+        'PASSWORD': '',
         'HOST': 'localhost',  # O la dirección IP de tu servidor MySQL
         'PORT': '3306',  # Puerto por defecto de MySQL
     }

@@ -1,11 +1,20 @@
-from tienda.models.user import User
-from tienda.models.furniture import Furniture
-from  tienda.models.furniturecategory import FurnitureCategory
-
- 
+from .user import User
+from .furniture import Furniture
+from  .furniturecategory import FurnitureCategory
+from .pay import Pay
+from .order import Orders
+from .orderitem import Orderitems
 
 __all__=[
+    
   'User',
   'Furniture',
-  'FurnitureCategory'
+  'FurnitureCategory',
+  'Pay'
+
+#
+   'Orders',
+   'Orderitems'
+
+  
 ]
