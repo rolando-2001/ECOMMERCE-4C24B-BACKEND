@@ -56,6 +56,6 @@ class Login(TokenObtainPairView):
             )
 
         return Response(
-            {"error:": "Contraseña o usuario incorrecto"},
+            {"error": "Contraseña o usuario incorrecto"},
             status=status.HTTP_400_BAD_REQUEST,
         )
