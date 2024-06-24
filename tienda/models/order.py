@@ -10,3 +10,4 @@ class Orders(models.Model):
 
     class Meta:
         db_table = 'orders'
+
